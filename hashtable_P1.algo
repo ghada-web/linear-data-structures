@@ -1,4 +1,4 @@
-ALGORITHM Sum_Distinct_Elements
+ALGORITHM SumDistinctElements
 VAR
     tab1,tab2:ARRAY_OF INTEGER[50];
     hash:HASH_TABLE<INTEGER,INTEGER>
