@@ -1,0 +1,36 @@
+ALGORITHM SumOverlappingElements
+VAR
+    tab1,tab2:ARRAY_OF INTEGER[50];
+    sum,i,j:INTEGER;
+    rep:STRING[3];
+BEGIN
+   sum:=0;
+   i,j:=0;
+   rep:="oui"
+   WHILE (rep=="oui") DO
+       Write("remplir le 1er tableau");
+       Read(tab1[i]);
+       i:=i+1;
+       Write("voulez vous rajouter d'autres elts");
+       read(rep);
+   END_WHILE
+    WHILE (rep=="oui") DO
+       Write("remplir le 2eme tableau");
+       Read(tab2[j]);
+       j:=j+1;
+       Write("voulez vous rajouter d'autres elts");
+       read(rep);
+   END_WHILE
+    m=tab1.length-1;
+    n=tab2.length-1;
+   FOR i FROM 0 TO m  DO
+       FOR j FROM 0 TO n DO
+           IF (tab1[i]==tab2[j]) THEN
+               sum:=sum+tab1[i]*2;
+           END_IF
+       END_FOR
+       
+   END_FOR
+  
+   Write("Overlapping  Elements Sum : ",sum);
+END

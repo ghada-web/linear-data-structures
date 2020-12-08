@@ -1,0 +1,57 @@
+ALGORITHM Sum_Distinct_Elements
+VAR
+    tab1,tab2:ARRAY_OF INTEGER[50];
+    hash:HASH_TABLE<INTEGER,INTEGER>
+  rep:STRING[3];
+  count,i,j,key ,sum:INTEGER;
+BEGIN
+   rep:="oui"
+   sum:=0;
+   WHILE (rep=="oui") DO
+       Write("remplir le 1er tableau");
+       Read(tab1[i]);
+       i:=i+1;
+       Write("voulez vous rajouter d'autres elts");
+       read(rep);
+   END_WHILE
+    WHILE (rep=="oui") DO
+       Write("remplir le 2eme tableau");
+       Read(tab2[j]);
+       j:=j+1;
+       Write("voulez vous rajouter d'autres elts");
+       read(rep);
+   END_WHILE
+   FOR i FROM 0 TO tab1.length-1  DO
+       cle:=tab1[i];
+        IF (hash.lookup(cle)==true) THEN
+            count:=hash.get(cle);
+            hash.insert(cle,count+1); 
+        ELSE
+            hash.insert(cle,1);
+        END_IF
+      
+   END_FOR
+
+     FOR i FROM 0 TO tab2.length-1  DO
+       cle:=tab2[i];
+        IF (hash.lookup(cle)==true) THEN
+            count:=hash.get(cle);
+            hash.insert(cle,count+1); 
+        ELSE
+            hash.insert(cle,1);
+        END_IF
+      
+   END_FOR
+  
+    Set<Integer> set := hash.keySet();
+    Iterator<Integer> iterator := set.iterator();
+    WHILE (iterator.hasNext()==true) DO
+       key := iterator.next();
+       count:=hash.get(key);
+       IF (count==2) THEN
+           sum:=sum+key*count;
+       END_IF
+    END_WHILE
+    Write("Overlapping  Elements Sum : ",  sum);
+    
+END
